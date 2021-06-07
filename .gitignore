@@ -1,0 +1,17 @@
+# Игнорировать каталог node_modules
+node_modules
+
+# Игнорировать каталог со сборкой проекта
+build
+
+# Игнорировать файлы от IDE (Visual Studio Code, WebStorm)
+.idea
+.vscode
+
+# Игнорировать файлы от операционных систем
+.DS_Store
+Thumbs.db
+[Dd]esktop.ini
+
+# Игнорировать файлы логов
+*.log*

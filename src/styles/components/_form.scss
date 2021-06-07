@@ -1,0 +1,313 @@
+@use "colors" as *;
+
+/*
+ * 1. Нормализуем стили и устанавливаем цвет замещающего текста
+ * 2. Устанавливаем стили для полей формы
+ * 3. Темы:
+ *      %simple
+ *      %shadow
+ *      %underline
+ * 4. Устанавливаем общие стили для пользовательского чекбокса и радио-кнопки
+ * 5. Устанавливаем стили только для пользовательского чекбокса
+ * 6. Устанавливаем стили только для радио-кнопки
+ * 7. Классы для Маркето-форм
+ * 8. Устанавливаем стили для пользовательского элемента [type="number"]
+ */
+
+/* 1 */
+input,
+select,
+textarea,
+optgroup {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+select {
+  text-transform: none;
+}
+
+textarea {
+  vertical-align: top;
+  overflow: auto;
+  resize: none;
+}
+
+::-ms-expand,
+::-ms-clear {
+  display: none;
+}
+
+::placeholder {
+  color: $gray-99;
+  opacity: 1;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* 2 */
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  width: 100%;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+  color: $black;
+  border: none;
+  border-radius: 0;
+
+  &:focus {
+    outline: none
+  }
+}
+
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpolygon points='1.2 4.2 6 9 10.8 4.2 9.6 3 6 6.6 2.4 3 1.2 4.2' fill='%231d1d1b'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  [dir="rtl"] & {
+    background-position: left 12px center;
+  }
+}
+
+textarea {
+  min-height: 144px;
+}
+
+/* 3 */
+input,
+select,
+textarea {
+  @extend %simple;
+}
+
+%simple {
+  background-color: $white;
+  border: 1.5px solid $gray-cc;
+  padding: 12.5px 12px;
+  transition: border-color .3s ease;
+
+  &:hover {
+    border-color: $precision-blue;
+  }
+
+  &:focus {
+    padding-bottom: 12px;
+    border-bottom: 2px solid $teal;
+  }
+}
+
+%shadow {
+  background-color: $white;
+  box-shadow: 0px 7px 16px rgba(38, 202, 153, 0.16);
+  padding: 14px 16px;
+  transition: box-shadow .3s ease;
+
+  &:hover {
+    box-shadow: 0px 7px 20px rgba(38, 202, 153, 0.24);
+  }
+
+  &:focus {
+    padding-bottom: 12px;
+    border-bottom: 2px solid $teal;
+    box-shadow: 0px 7px 16px rgba(38, 202, 153, 0.16);
+  }
+}
+
+%underline {
+  background-color: $white;
+  padding: 13px 0;
+  border-bottom: 2px solid $gray-cc;
+  transition: border-color .3s ease;
+
+  &:hover {
+    border-color: $precision-blue;
+  }
+
+  &:focus {
+    border-color: $teal;
+  }
+}
+
+/* 4 */
+input[type="checkbox"],
+input[type="radio"] {
+  position: absolute;
+  left: -9999em;
+
+  &:focus {
+    outline: none;
+  }
+
+  & + label {
+    cursor: pointer;
+  }
+
+  & + label::before {
+    margin: 0 12px 0 0;
+    [dir="rtl"] & {
+      margin: 0 0 0 12px;
+    }
+  }
+}
+
+/* 5 */
+input[type="checkbox"] {
+  & + label {
+    position: relative;
+  }
+
+  & + label::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    background-color: $white;
+    border: 1.5px solid $gray-cc;
+    border-radius: 3px;
+    transition: background-color .3s ease, border-color .3s ease;
+  }
+
+  &:hover + label::before,
+  &:focus + label::before {
+    background-color: $gray-f8;
+    border-color: $gray-cc;
+  }
+
+  &:checked + label::before {
+    background-color: $green;
+    border-color: $green;
+  }
+
+  &:checked:hover + label::before,
+  &:checked:focus + label::before {
+    background-color: $teal;
+    border-color: $teal;
+  }
+
+  &:checked + label::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20.4 8.21L11.15 18 3.6 11.75l2.5-2.51 4.73 3.91L17.58 6z' fill='%23fff'/%3E%3C/svg%3E");
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    [dir="rtl"] & {
+      right: 0;
+    }
+  }
+
+  &:disabled + label::before {
+    background-color: $gray-f8;
+    border-color: $gray-f2;
+  }
+
+  &:checked:disabled + label:before {
+    background-color: $green;
+    border-color: $green;
+    opacity: 0.48;
+  }
+}
+
+/* 6 */
+input[type="radio"] {
+  & + label::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    background-color: $white;
+    border: 1.5px solid $gray-cc;
+    border-radius: 50%;
+    transition: background-color .3s ease, border-color .3s ease, border-width .3s ease;
+  }
+
+  &:hover + label::before,
+  &:focus + label::before {
+    background-color: $gray-f8;
+    border-color: $gray-cc;
+  }
+
+  &:checked + label::before {
+    background-color: $white;
+    border: 7.5px solid $green;
+  }
+
+  &:disabled + label::before {
+    background-color: $gray-f8;
+    border-color: $gray-f2;
+  }
+}
+
+/* 7 */
+/* Скрываем форму до окончания выполнения скрипта, который отключает стили по умолчанию */
+.mktoForm {
+  visibility: hidden;
+  &[data-styles-ready="true"] {
+    visibility: visible;
+  }
+}
+
+/* Скрываем элемент, который обозначает поле, обязательное для заполнения */
+.mktoAsterix {
+  display: none;
+}
+
+/* Устанавливаем отступ между элементами формы */
+.mktoFormRow,
+.googleRecaptcha {
+  margin-bottom: 16px;
+}
+
+/* Устанавливаем стили для подписей к полям формы */
+// .mktoLabel {}
+
+/* Устанавливаем стили для кнопки */
+// .mktoButton {}
+
+/* Устанавливаем стили для текста ошибки */
+.mktoError {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 300;
+  color: $energy-red;
+  margin-top: 2px;
+}
+
+/* 8 */
+.mktoFieldWrap {
+  position: relative;
+}
+
+.quantity {
+  width: 16px;
+  height: 48px;
+  position: absolute;
+  top: 20px;
+  [dir="ltr"] & { right: 12px; }
+  [dir="rtl"] & { left: 12px; }
+}
+
+.quantity__btn {
+  height: 18px;
+  margin: 4px 0;
+  font-size: 18px;
+  line-height: 1;
+  color: #1d1d1b;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}

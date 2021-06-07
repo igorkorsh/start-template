@@ -1,0 +1,33 @@
+@use "../components/colors" as *;
+
+/* Устанавливаем свойства текста по умолчанию */
+html {
+  font-family: "Kaspersky Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+  color: $black;
+
+  &:lang(ar) { font-family: "Noto Sans", "Noto Kufi Arabic", sans-serif; }          /* Арабский */
+  &:lang(el) { font-family: "Noto Sans", sans-serif; }                              /* Греческий */
+  &:lang(he) { font-family: "Noto Sans", "Noto Sans Hebrew", sans-serif; }          /* Иврит */
+  &:lang(ja) { font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif; }          /* Японский */
+  &:lang(ko) { font-family: "Noto Sans", "Noto Sans CJK KR", sans-serif; }          /* Корейский */
+  &:lang(zh-Hans) { font-family: "Noto Sans", "Noto Sans CJK SC", sans-serif; }     /* Китайский упрощенный */
+  &:lang(zh-Hant) { font-family: "Noto Sans", "Noto Sans CJK TC", sans-serif; }     /* Китайский традиционный */
+}
+
+/* Устанавливаем цвет ссылок по умолчанию */
+a {
+  text-decoration: none;
+  color: $green;
+  transition: color .3s ease;
+
+  &:hover {
+    color: $teal;
+  }
+
+  &:active {
+    color: $green;
+  }
+}

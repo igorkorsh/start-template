@@ -1,0 +1,329 @@
+/*
+ * 1. Base styles                                   %button
+ * 2. Primary green button                          %primary-green
+ * 3. Primary green button (with shadow)            %primary-green-with-shadow
+ * 4. Primary black button (with shadow)            %primary-black
+ * 5. Primary red button                            %primary-red
+ * 6. Primary red button (with shadow)              %primary-red-with-shadow
+ * 7. Primary white button (with shadow)            %primary-white
+ * 8. Secondary green button                        %secondary-green
+ * 9. Secondary black button                        %secondary-black
+ * 10. Secondary white button                       %secondary-white
+ * 11. Custom color mixin                           button($button-color, $text-color)
+ */
+
+@use "colors" as *;
+@use "sass:color";
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+}
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* 1 */
+%button {
+  width: 100%;
+  font: inherit;
+  display: inline-block;
+  padding: 12px;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 2px solid;
+  border-radius: 3px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @media (min-width: 640px) {
+    min-width: 96px;
+    width: auto;
+  }
+
+  @media (min-width: 1024px) {
+    min-width: 152px;
+  }
+}
+
+/* 2 */
+%primary-green {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  transition: background-color .3s ease, border-color .3s ease;
+
+  &:hover, &:focus {
+    background-color: $teal;
+    border-color: $teal;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $dark-green;
+    border-color: $dark-green;
+    color: $white;
+  }
+
+  &:disabled {
+    background-color: $gray-f2;
+    border-color: $gray-f2;
+    color: $gray-cc;
+  }
+}
+
+/* 3 */
+%primary-green-with-shadow {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  box-shadow: 0px 8px 32px rgba(52, 208, 184, 0.48);
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+
+  &:hover, &:focus {
+    background-color: $teal;
+    border-color: $teal;
+    color: $white;
+    box-shadow: 0px 12px 40px rgba(21, 190, 164, 0.48);
+  }
+
+  &:active {
+    background-color: $green;
+    border-color: $green;
+    color: $white;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: $gray-f2;
+    border-color: $gray-f2;
+    color: $gray-cc;
+    box-shadow: none;
+  }
+}
+
+/* 4 */
+%primary-black {
+  background-color: $black;
+  border-color: $black;
+  color: $white;
+  box-shadow: 0px 8px 32px rgba(0, 95, 80, 0.52);
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, color .3s ease;
+
+  &:hover, &:focus {
+    background-color: $black;
+    border-color: $black;
+    color: $teal;
+    box-shadow: 0px 12px 32px rgba(0, 95, 80, 0.64);
+  }
+
+  &:active {
+    background-color: $black;
+    border-color: $black;
+    color: $green;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: rgba($black, 0.16);
+    border-color: rgba($black, 0.16);
+    color: rgba($dark-green, 0.48);
+    box-shadow: none;
+  }
+}
+
+/* 5 */
+%primary-red {
+  background-color: $energy-red;
+  border-color: $energy-red;
+  color: $white;
+  transition: background-color .3s ease, border-color .3s ease;
+
+  &:hover, &:focus {
+    background-color: $energy-red-hover;
+    border-color: $energy-red-hover;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $energy-red-hover;
+    border-color: $energy-red-hover;
+    color: $white;
+  }
+
+  &:disabled {
+    background-color: $gray-f2;
+    border-color: $gray-f2;
+    color: $gray-cc;
+  }
+}
+
+/* 6 */
+%primary-red-with-shadow {
+  background-color: $energy-red;
+  border-color: $energy-red;
+  color: $white;
+  box-shadow: 0px 8px 32px rgba(255, 55, 72, 0.32);
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+
+  &:hover, &:focus {
+    background-color: $energy-red-hover;
+    border-color: $energy-red-hover;
+    color: $white;
+    box-shadow: 0px 8px 32px rgba(255, 55, 72, 0.4);
+  }
+
+  &:active {
+    background-color: $energy-red-hover;
+    border-color: $energy-red-hover;
+    color: $white;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: $gray-f2;
+    border-color: $gray-f2;
+    color: $gray-cc;
+    box-shadow: none;
+  }
+}
+
+/* 7 */
+%primary-white {
+  background-color: $white;
+  border-color: $white;
+  color: $green;
+  box-shadow: 0px 8px 32px rgba(52, 208, 184, 0.48);
+  transition: box-shadow .3s ease, color .3s ease;
+
+  &:hover, &:focus {
+    background-color: $white;
+    border-color: $white;
+    color: $teal;
+    box-shadow: 0px 12px 40px rgba(21, 190, 164, 0.48);
+  }
+
+  &:active {
+    background-color: $white;
+    border-color: $white;
+    color: $green;
+    box-shadow: 0px 8px 24px rgba(52, 208, 184, 0.24);
+  }
+
+  &:disabled {
+    background-color: $gray-f2;
+    border-color: $gray-f2;
+    color: $gray-cc;
+    box-shadow: none;
+  }
+}
+
+/* 8 */
+%secondary-green {
+  border-color: $green;
+  color: $green;
+  transition: border-color .3s ease, color .3s ease;
+
+  &:hover, &:focus {
+    border-color: $teal;
+    color: $teal;
+  }
+
+  &:active {
+    border-color: $dark-green;
+    color: $dark-green  ;
+  }
+
+  &:disabled {
+    border-color: $gray-f2;
+    color: $gray-cc;
+  }
+}
+
+/* 9 */
+%secondary-black {
+  border-color: $dark-green;
+  color: $dark-green;
+  transition: border-color .3s ease, color .3s ease;
+
+  &:hover, &:focus, &:active {
+    border-color: $black;
+    color: $black;
+  }
+
+  &:disabled {
+    border-color: $dark-green;
+    color: $dark-green;
+    opacity: 0.48;
+  }
+}
+
+/* 10 */
+%secondary-white {
+  border-color: $white;
+  color: $white;
+  transition: border-color .3s ease, color .3s ease;
+
+  &:hover, &:focus, &:active {
+    border-color: rgba($white, 0.48);
+    color: $white;
+  }
+
+  &:disabled {
+    border-color: $white;
+    color: $white;
+    opacity: 0.24;
+  }
+}
+
+/* 11 */
+@mixin button($button-color, $text-color, $shadow: false) {
+  background-color: $button-color;
+  border-color: $button-color;
+  color: $text-color;
+  @if $shadow {
+    box-shadow: 0 8px 32px rgba($button-color, 0.32);
+    transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+  } @else {
+    transition: background-color .3s ease, border-color .3s ease;
+  }
+
+  &:hover, &:focus {
+    background-color: lighten($button-color, 20%);
+    border-color: lighten($button-color, 20%);
+    color: $text-color;
+    @if $shadow {
+      box-shadow: 0 12px 40px rgba(lighten($button-color, 20%), 0.48);
+    }
+  }
+
+  &:active {
+    background-color: darken($button-color, 20%);
+    border-color: darken($button-color, 20%);
+    color: $text-color;
+    @if $shadow {
+      box-shadow: none;
+    }
+  }
+}
