@@ -14,30 +14,8 @@
  * 8. Устанавливаем стили для пользовательского элемента [type="number"]
  */
 
+
 /* 1 */
-input,
-select,
-textarea,
-optgroup {
-  font-family: inherit;
-  font-size: 100%;
-  margin: 0;
-}
-
-input {
-  overflow: visible;
-}
-
-select {
-  text-transform: none;
-}
-
-textarea {
-  vertical-align: top;
-  overflow: auto;
-  resize: none;
-}
-
 ::-ms-expand,
 ::-ms-clear {
   display: none;
@@ -82,16 +60,12 @@ select {
 }
 
 textarea {
+  vertical-align: top;
+  resize: none;
   min-height: 144px;
 }
 
 /* 3 */
-input,
-select,
-textarea {
-  @extend %simple;
-}
-
 %simple {
   background-color: $white;
   border: 1.5px solid $gray-cc;

@@ -72,22 +72,20 @@
 }
 
 @media (min-width: 640px) {
-  .footer__wrap {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .footer {
     padding-top: 24px;
     padding-bottom: 24px;
   }
 
+  .footer__wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .footer__social {
     margin-top: 4px;
-    margin-left: auto;
-    margin-right: 0;
-
-    [dir="rtl"] & {
-      margin-left: 0;
-      margin-right: auto;
-    }
+    [dir="ltr"] & { margin-left: auto; }
+    [dir="rtl"] & { margin-right: auto; }
   }
 
   .copyright {

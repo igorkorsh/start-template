@@ -1,2 +1,8 @@
 @use "../components/form";
 @use "../components/button";
+
+input,
+select,
+textarea {
+  @extend %simple;
+}
