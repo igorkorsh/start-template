@@ -1,28 +1,33 @@
-footer {
-  background-color: #ffffff;
-}
+@use "../components/mixins" as *;
+@use "../components/colors" as *;
 
-.footer__wrap {
-  display: flex;
-  flex-direction: column;
+.footer {
+  background-color: $white;
   padding-top: 16px;
   padding-bottom: 24px;
 }
 
-/* Логотип */
+.footer__wrap {
+  @include container;
+  display: flex;
+  flex-direction: column;
+}
+
 .footer__logo {
   width: 156px;
   height: 32px;
+  margin: 0 16px 0 0;
   background-image: url('../images/logo.svg');
+
+  [dir="rtl"] & {
+    margin: 0 0 0 16px;
+  }
 }
 
-/* Иконки социальных сетей */
 .footer__social {
+  @include reset-list;
   display: flex;
-  list-style-type: none;
-  margin: 0;
   margin-top: 24px;
-  padding: 0;
 }
 
 .social {
@@ -32,49 +37,37 @@ footer {
 
   & + & {
     margin: 0 0 0 8px;
+
     [dir="rtl"] & {
       margin: 0 8px 0 0;
     }
   }
 
-  &--fb { background-image: url("https://go.kaspersky.com/rs/802-IJN-240/images/facebook.svg"); }
-  &--tw { background-image: url("https://go.kaspersky.com/rs/802-IJN-240/images/twitter.svg"); }
-  &--ln { background-image: url("https://go.kaspersky.com/rs/802-IJN-240/images/linkedin.svg"); }
-  &--yt { background-image: url("https://go.kaspersky.com/rs/802-IJN-240/images/youtube.svg"); }
-  &--ig { background-image: url("https://go.kaspersky.com/rs/802-IJN-240/images/instagram.svg"); }
+  &--fb { background-image: url("../images/facebook.svg"); }
+  &--tw { background-image: url("../images/twitter.svg"); }
+  &--ln { background-image: url("../images/linkedin.svg"); }
+  &--yt { background-image: url("../images/youtube.svg"); }
+  &--ig { background-image: url("../images/instagram.svg"); }
 }
 
-/* Копирайт */
 .copyright {
   display: flex;
   flex-wrap: wrap;
   font-size: 12px;
   line-height: 16px;
   font-weight: 300;
-  color: #999999;
+  color: $gray-99;
   margin-top: 16px;
-
-  span {
-    padding-right: 8px;
-  }
 }
 
 .copyright__list {
+  @include reset-list;
   display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 
-  &-item {
-    & + & {
-      padding-left: 8px;
-    }
-
-    &::before {
-      content: "•";
-      display: inline-block;
-      padding-right: 8px;
-    }
+  li::before {
+    content: "•";
+    display: inline-block;
+    padding: 0 4px;
   }
 }
 
@@ -89,6 +82,12 @@ footer {
   .footer__social {
     margin-top: 4px;
     margin-left: auto;
+    margin-right: 0;
+
+    [dir="rtl"] & {
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
 
   .copyright {
@@ -103,7 +102,6 @@ footer {
   }
 
   .copyright {
-    margin-left: 16px;
     width: auto;
   }
 

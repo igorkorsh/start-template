@@ -5,11 +5,11 @@ import images from './images';
 import { path } from './config';
 import { watch } from 'gulp';
 
-const observer = () => {
+const watcher = () => {
   watch(path.watch.pages, pages);
   watch(path.watch.styles, styles);
   watch(path.watch.scripts, scripts);
   watch(path.watch.images, images);
 }
 
-export default observer;
+export default watcher;

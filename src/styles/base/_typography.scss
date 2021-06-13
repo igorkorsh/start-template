@@ -19,8 +19,8 @@ html {
 
 /* Устанавливаем цвет ссылок по умолчанию */
 a {
-  text-decoration: none;
   color: $green;
+  text-decoration: none;
   transition: color .3s ease;
 
   &:hover {

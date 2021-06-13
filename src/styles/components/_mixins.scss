@@ -1,4 +1,4 @@
-.container {
+@mixin container {
   width: 100%;
   padding-left: 16px;
   padding-right: 16px;
@@ -11,6 +11,12 @@
   }
 
   @media (min-width: 1200px) {
-    max-width: 1264px;
+    max-width: 1200px;
   }
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }

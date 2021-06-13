@@ -1,12 +1,14 @@
 import { path, build } from './config';
-import bs from 'browser-sync';
+import { create as bsCreate } from 'browser-sync';
+
+const bs = bsCreate();
 
 const server = (done) => {
-  bs.create().init({
+  bs.init({
     server: build,
     notify: false,
     cors: true,
-    open: false,
+    open: true,
     files: [
       path.watch.pages, {
         fn: () => this.reload
