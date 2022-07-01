@@ -1,0 +1,25 @@
+body {
+	padding-top: 64px;
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	width: 100%;
+	background-color: $white;
+	box-shadow: 0 1px 4px rgba(92, 133, 150, 0.25);
+}
+
+.nav__container {
+	display: flex;
+	align-items: center;
+	height: 64px;
+}
+
+.nav__logo {
+	@media (max-width: 1023.98px) {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}

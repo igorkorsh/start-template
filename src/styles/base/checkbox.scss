@@ -1,0 +1,74 @@
+@import "colors.scss";
+
+[type="checkbox"] {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	padding: 0 !important;
+	background-color: transparent;
+	border: 2px solid;
+	border-color: $gray-cc;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: border-color 0.3s ease, background-color 0.3s ease;
+	appearance: none;
+
+	&:hover {
+		background-color: $gray-f8;
+	}
+
+	&:disabled {
+		background-color: $gray-f8;
+		border-color: $gray-f2;
+		pointer-events: none;
+	}
+
+	// Галочка в чекбоксе
+	&::before {
+		position: absolute;
+		top: 12px;
+		left: 5.5px;
+		width: 9.5px;
+		height: 3.5px;
+		background-color: $white;
+		transform: rotate(45deg) translateX(-2.5px) scale(0);
+		transform-origin: 3.5px 0;
+		transition: transform 0.2s ease;
+		content: "";
+	}
+
+	&::after {
+		position: absolute;
+		top: 12px;
+		left: 5.5px;
+		width: 14px;
+		height: 3.5px;
+		background-color: $white;
+		transform: rotate(-45deg) scale(0);
+		transform-origin: 3.5px 0;
+		transition: transform 0.2s ease;
+		content: "";
+	}
+
+	&:checked {
+		background-color: $green;
+		border-color: $green;
+
+		&:hover {
+			background-color: $teal;
+			border-color: $teal;
+		}
+
+		&:disabled {
+			opacity: 0.48;
+		}
+
+		&::before {
+			transform: rotate(45deg) translateX(-3.5px) scale(1);
+		}
+
+		&::after {
+			transform: rotate(-45deg) scale(1) translateY(-1px);
+		}
+	}
+}

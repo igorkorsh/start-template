@@ -1,0 +1,102 @@
+.footer {
+	background-color: #010304;
+
+	&__container {
+		display: flex;
+		padding-top: 16px;
+		padding-bottom: 24px;
+
+		@media (max-width: 639.98px) {
+			flex-direction: column;
+		}
+
+		@media (min-width: 640px) {
+			flex-wrap: wrap;
+			padding-top: 24px;
+		}
+	}
+
+	&__logo {
+		fill: $white;
+	}
+
+	&__copyright {
+		@include font(400);
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		padding-top: 16px;
+		color: $gray-cc;
+		font-size: 12px;
+		line-height: 16px;
+
+		p {
+			padding-right: 8px;
+		}
+
+		@media (min-width: 640px) {
+			padding-top: 12px;
+		}
+
+		@media (min-width: 1024px) {
+			width: auto;
+			padding-left: 16px;
+		}
+	}
+
+	&__list {
+		display: flex;
+
+		&-item {
+			padding-right: 8px;
+
+			&::before {
+				padding-right: 8px;
+				content: '\2022';
+			}
+		}
+	}
+
+	&__link {
+		@include font(600);
+		color: $teal;
+		text-decoration: none;
+		transition: color 0.3s ease;
+
+		&:hover {
+			color: $green;
+		}
+	}
+}
+
+.social {
+	display: flex;
+	padding-top: 24px;
+
+	&__item {
+		display: flex;
+		height: 24px;
+
+		& + & {
+			margin-left: 8px;
+		}
+	}
+
+	&__icon {
+		fill: $gray-ae;
+		trding-top: 24px;ansition: fill 0.3s ease;
+
+		&:hover {
+			fill: $white;
+		}
+	}
+
+	@media (min-width: 640px) {
+		margin-left: auto;
+		padding-top: 4px;
+	}
+	
+	@media (min-width: 1024px) {
+		order: 1;
+	}
+}

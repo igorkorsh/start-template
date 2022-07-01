@@ -1,0 +1,116 @@
+@import "mixins.scss";
+@import "colors.scss";
+@import "buttons.scss";
+
+$assets: "../assets/fonts/";
+$images: "../../images/";
+// $assets: 'https://go.kaspersky.com/rs/802-IJN-240/images/';
+// $images: 'https://go.kaspersky.com/rs/802-IJN-240/images/L_';
+
+@include font-face("Kaspersky Sans Display Light", $assets + "Kaspersky_Sans_Display_Light", 300);
+@include font-face("Kaspersky Sans Display", $assets + "Kaspersky_Sans_Display_Regular", 400);
+@include font-face("Kaspersky Sans Display Medium", $assets + "Kaspersky_Sans_Display_Medium", 500);
+@include font-face("Kaspersky Sans Display Semibold", $assets + "Kaspersky_Sans_Display_SemiBold", 600);
+@include font-face("Kaspersky Sans Display", $assets + "Kaspersky_Sans_Display_Bold", 700);
+@include font-face("Kaspersky Sans Display Exbold", $assets + "Kaspersky_Sans_Display_ExtraBold", 800);
+@include font-face("Kaspersky Sans", $assets + "Kaspersky_Sans_Display_Light", 300);
+@include font-face("Kaspersky Sans", $assets + "Kaspersky_Sans_Display_Regular", 400);
+@include font-face("Kaspersky Sans", $assets + "Kaspersky_Sans_Display_Regular", 700);
+
+// Нормализация стилей
+@import "reset.scss";
+
+body {
+	@include font(400);
+	color: $black;
+	font-size: 16px;
+	line-height: 20px;
+	background-color: $white;
+}
+
+h1, h2, h3, p {
+	margin: 0;
+}
+
+.container {
+	width: 100%;
+	max-width: 1264px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 16px;
+	padding-left: 16px;
+
+	@media (min-width: 640px) {
+		padding-right: 32px;
+		padding-left: 32px;
+	}
+}
+
+.logo {
+	width: 156px;
+	height: 32px;
+	fill: $green;
+}
+
+.title {
+	@include font(600);
+	font-size: 36px;
+	line-height: 40px;
+
+	@media (min-width: 1024px) {
+		font-size: 48px;
+		line-height: 52px;
+	}
+}
+
+.text {
+	@include font(300);
+	font-size: 18px;
+	line-height: 24px;
+	letter-spacing: -0.01em;
+
+	@media (min-width: 1024px) {
+		font-size: 21px;
+	}
+}
+
+.button {
+	@include button;
+	@include button-text;
+	@include button-primary-green-shadow;
+	min-width: 260px;
+	
+	@media (max-width: 767.98px) {
+		width: 100%;
+	}
+}
+
+ul[class] {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	clip: rect(0 0 0 0);
+}
+
+.desktop-only {
+	@media (max-width: 1023.98px) {
+		display: none;
+	}
+}
+
+.mobile-only {
+	@media (min-width: 768px) {
+		display: none;
+	}
+}

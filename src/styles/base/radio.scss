@@ -1,0 +1,29 @@
+@import "colors.scss";
+
+[type="radio"] {
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	border: 2px solid;
+	border-color: $gray-cc;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: border-width 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+	appearance: none;
+
+	&:hover {
+		background-color: $gray-f8;
+	}
+
+	&:disabled {
+		background-color: $gray-f8;
+		border-color: $gray-f2;
+		pointer-events: none;
+	}
+
+	&:checked {
+		background-color: transparent;
+		border-width: 7.5px;
+		border-color: $green;
+	}
+}

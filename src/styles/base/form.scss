@@ -1,0 +1,46 @@
+input:not([type="checkbox"], [type="radio"]),
+select,
+textarea {
+	@include font(300);
+	width: 100%;
+	padding: 12px;
+	color: $gray-44;
+	font-size: 16px;
+	line-height: 20px;
+	background-color: transparent;
+	border: 2px solid;
+	border-color: $gray-cc;
+	transition: border-color 0.3s ease;
+	appearance: none;
+
+	&:hover {
+		border-color: $precision-blue;
+	}
+
+	&:focus {
+		border-color: $gray-cc;
+		border-bottom-color: $teal;
+		outline: 0;
+	}
+}
+
+select {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%231d1d1b' d='M10.8 4.8 9.6 3.6 6 7.2 2.4 3.6 1.2 4.8 6 9.6l4.8-4.8z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	background-size: 12px;
+	border-radius: 0;
+	cursor: pointer;
+}
+
+::-ms-clear,
+::-ms-expand {
+	display: none;
+}
+
+::placeholder {
+	color: rgba($gray-99, 0);
+}
+
+@import "checkbox.scss";
+@import "radio.scss";

@@ -1,0 +1,55 @@
+@use "sass:math";
+
+@function strip($value) {
+	@return math.div($value, ($value * 0 + 1));
+}
+
+@mixin text-size($fsMin, $lhMin, $fsMax, $lhMax) {
+	font-size: $fsMin;
+	line-height: $lhMin;
+
+	@media (min-width: 640px) {
+		font-size: calc(#{$fsMin} + #{strip($fsMax - $fsMin)} * ((100vw - 640px) / 384));
+		line-height: calc(#{$lhMin} + #{strip($lhMax - $lhMin)} * ((100vw - 640px) / 384));
+	}
+
+	@media (min-width: 1024px) {
+		font-size: $fsMax;
+		line-height: $lhMax;
+	}
+}
+
+@mixin font-face($name, $path, $weight: null) {
+	$src: null;
+	$exts: woff2 woff;
+
+	@each $ext in $exts {
+		$src: append($src, url(quote($path + '.' + $ext)) format(quote($ext)), comma);
+	}
+
+	@font-face {
+		font-style: normal;
+		font-weight: $weight;
+		font-family: quote($name);
+		src: $src;
+		font-display: swap;
+	}
+}
+
+$fonts: (
+	300: 'Kaspersky Sans Display Light',
+	400: 'Kaspersky Sans Display',
+	500: 'Kaspersky Sans Display Medium',
+	600: 'Kaspersky Sans Display Semibold',
+	700: 'Kaspersky Sans Display',
+	800: 'Kaspersky Sans Display Exbold'
+);
+
+@mixin font($weight) {
+	@if map-has-key($fonts, $weight) {
+		font-weight: $weight;
+		font-family: map-get($fonts, $weight);
+	} @else {
+		@warn 'Такого значения нет в ассоциативном массиве $fonts. Подробнее смотрите в файле styles/base/mixins.scss'
+	}
+};

@@ -1,0 +1,102 @@
+.mktoForm.mktoHasWidth {
+	visibility: hidden;
+
+	&.mktoFormReady {
+		visibility: visible;
+	}
+}
+
+.mktoAsterix {
+	display: none;
+}
+
+.mktoFormRow {
+	position: relative;
+
+	& + & {
+		margin-top: 16px;
+	}
+}
+
+.mktoFieldWrap {
+	position: relative;
+}
+
+.mktoLabel {
+	position: absolute;
+	top: 0;
+	left: 12px;
+	color: $gray-99;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+	transform: translate(0, 15px) scale(1);
+	transition: transform 0.1s ease-in-out;
+}
+
+.mktoField.mktoHasWidth:not(:placeholder-shown),
+.mktoField.mktoHasWidth:focus {
+	padding-top: 18px;
+	padding-bottom: 6px;
+	& ~ .mktoLabel {
+		width: 200px;
+		transform: translate(-24px, 4px) scale(0.75);
+	}
+}
+
+.mktoCheckboxList {
+	display: flex;
+
+	[type="checkbox"] {
+		flex-shrink: 0;
+		margin-right: 16px;
+	}
+}
+
+.mktoErrorMsg {
+	position: absolute;
+	color: $energy-red;
+	font-weight: 300;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.mktoButtonRow {
+	margin-top: 32px;
+}
+
+.mktoButtonRow {
+	text-align: center;
+}
+
+.mktoButton {
+	@include button;
+	@include button-text;
+	@include button-primary-black;
+	min-width: 260px;
+}
+
+.mktoHtmlText {
+	color: $gray-66;
+}
+
+.g-recaptcha {
+	margin-top: 16px;
+	transform-origin: 0 0;
+	
+	&-response {
+		display: none;
+	}
+
+	& > iframe {
+		display: none;
+	}
+}
+
+@media (max-width: 380px) {
+	#rc-imageselect,
+	.g-recaptcha {
+		transform: scale(0.8);
+		transform-origin: 0 0;
+	}
+}
